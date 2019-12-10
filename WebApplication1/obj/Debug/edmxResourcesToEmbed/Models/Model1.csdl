@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="webFinalDB" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="webFinalEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Afiliadoes" EntityType="webFinalDB.Afiliado" />
+    <EntitySet Name="Cliente_Membresia" EntityType="webFinalDB.Cliente_Membresia" />
+    <EntitySet Name="Membresias" EntityType="webFinalDB.Membresia" />
+    <EntitySet Name="Socios" EntityType="webFinalDB.Socio" />
+    <EntitySet Name="users" EntityType="webFinalDB.user" />
+    <AssociationSet Name="fk_socio_afiliado" Association="webFinalDB.fk_socio_afiliado">
+      <End Role="Socio" EntitySet="Socios" />
+      <End Role="Afiliado" EntitySet="Afiliadoes" />
+    </AssociationSet>
+    <AssociationSet Name="fk_mem" Association="webFinalDB.fk_mem">
+      <End Role="Membresia" EntitySet="Membresias" />
+      <End Role="Cliente_Membresia" EntitySet="Cliente_Membresia" />
+    </AssociationSet>
+    <AssociationSet Name="fk_soc" Association="webFinalDB.fk_soc">
+      <End Role="Socio" EntitySet="Socios" />
+      <End Role="Cliente_Membresia" EntitySet="Cliente_Membresia" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Afiliado">
+    <Key>
+      <PropertyRef Name="Id_Afiliado" />
+    </Key>
+    <Property Name="Id_Afiliado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Socio" Type="Int32" Nullable="false" />
+    <Property Name="Parentesco" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Nombre_Afiliado" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Apellidos_Afiliado" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Socio" Relationship="webFinalDB.fk_socio_afiliado" FromRole="Afiliado" ToRole="Socio" />
+  </EntityType>
+  <EntityType Name="Cliente_Membresia">
+    <Key>
+      <PropertyRef Name="Id_Socio" />
+      <PropertyRef Name="Id_Membresia" />
+    </Key>
+    <Property Name="Id_Socio" Type="Int32" Nullable="false" />
+    <Property Name="Id_Membresia" Type="Int32" Nullable="false" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <Property Name="Fecha_Ingreso" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Fecha_salida" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Membresia" Relationship="webFinalDB.fk_mem" FromRole="Cliente_Membresia" ToRole="Membresia" />
+    <NavigationProperty Name="Socio" Relationship="webFinalDB.fk_soc" FromRole="Cliente_Membresia" ToRole="Socio" />
+  </EntityType>
+  <EntityType Name="Membresia">
+    <Key>
+      <PropertyRef Name="Id_Membresia" />
+    </Key>
+    <Property Name="Id_Membresia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tipo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Cliente_Membresia" Relationship="webFinalDB.fk_mem" FromRole="Membresia" ToRole="Cliente_Membresia" />
+  </EntityType>
+  <EntityType Name="Socio">
+    <Key>
+      <PropertyRef Name="Id_Socio" />
+    </Key>
+    <Property Name="Id_Socio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Foto" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Apellidos" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cedula" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Direccion" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Sexo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Telefono" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="Edad" Type="Int32" Nullable="false" />
+    <Property Name="Fecha_Nacimiento" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Lugar_De_Trabajo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Direccion_Trabajo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Telefono_Oficina" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Afiliadoes" Relationship="webFinalDB.fk_socio_afiliado" FromRole="Socio" ToRole="Afiliado" />
+    <NavigationProperty Name="Cliente_Membresia" Relationship="webFinalDB.fk_soc" FromRole="Socio" ToRole="Cliente_Membresia" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="id_usuario" />
+    </Key>
+    <Property Name="id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre_usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="password_usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="fk_socio_afiliado">
+    <End Type="webFinalDB.Socio" Role="Socio" Multiplicity="1" />
+    <End Type="webFinalDB.Afiliado" Role="Afiliado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Socio">
+        <PropertyRef Name="Id_Socio" />
+      </Principal>
+      <Dependent Role="Afiliado">
+        <PropertyRef Name="Id_Socio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_mem">
+    <End Type="webFinalDB.Membresia" Role="Membresia" Multiplicity="1" />
+    <End Type="webFinalDB.Cliente_Membresia" Role="Cliente_Membresia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Membresia">
+        <PropertyRef Name="Id_Membresia" />
+      </Principal>
+      <Dependent Role="Cliente_Membresia">
+        <PropertyRef Name="Id_Membresia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_soc">
+    <End Type="webFinalDB.Socio" Role="Socio" Multiplicity="1" />
+    <End Type="webFinalDB.Cliente_Membresia" Role="Cliente_Membresia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Socio">
+        <PropertyRef Name="Id_Socio" />
+      </Principal>
+      <Dependent Role="Cliente_Membresia">
+        <PropertyRef Name="Id_Socio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

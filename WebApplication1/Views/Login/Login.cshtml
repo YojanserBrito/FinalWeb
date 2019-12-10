@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+
+
+<div class="form">
+
+    <h1>Socios De Club Proyecto Final</h1>
+
+    <div class="form-content">
+        <form name="Login" action="/Login/Verificar" method="post">
+            <div class="form-info">
+                <h2>Login</h2>
+            </div>
+            <div class="email-w3l">
+                <span class="i1"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
+                <input class="email" type="email" name="User" placeholder="Email" required="">
+            </div>
+            <div class="pass-w3l">
+                <!---728x90--->
+                <span class="i2"><i class="fa fa-unlock" aria-hidden="true"></i></span>
+                <input class="pass" type="password" name="Password" placeholder="Password" required="">
+            </div>
+            <div class="form-check">
+                <div class="left">
+                    <input type="checkbox" value="Remember me">Remember me
+                </div>
+                <div class="right">
+                    <a href="#">Forgot Password?</a>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="submit-agileits">
+                <input class="login" type="submit" value="login">
+            </div>
+           
+
+                <div class="submit-agileits">
+                    @Html.ActionLink("Registrar", "Create","Users")
+                </div>
+           
+
+        </form>
+        
+
+    </div>
+</div>
+<!---728x90--->
+<footer>&copy; 2019 ITLA. Yojanser Brito Proyecto Final | Programacion Web <a href="#">2017-5730</a></footer>
+<!---728x90--->

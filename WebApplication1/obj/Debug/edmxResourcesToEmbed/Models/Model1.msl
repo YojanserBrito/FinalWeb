@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="webFinalDBStoreContainer" CdmEntityContainer="webFinalEntities">
+    <EntitySetMapping Name="Afiliadoes">
+      <EntityTypeMapping TypeName="webFinalDB.Afiliado">
+        <MappingFragment StoreEntitySet="Afiliado">
+          <ScalarProperty Name="Apellidos_Afiliado" ColumnName="Apellidos_Afiliado" />
+          <ScalarProperty Name="Nombre_Afiliado" ColumnName="Nombre_Afiliado" />
+          <ScalarProperty Name="Parentesco" ColumnName="Parentesco" />
+          <ScalarProperty Name="Id_Socio" ColumnName="Id_Socio" />
+          <ScalarProperty Name="Id_Afiliado" ColumnName="Id_Afiliado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cliente_Membresia">
+      <EntityTypeMapping TypeName="webFinalDB.Cliente_Membresia">
+        <MappingFragment StoreEntitySet="Cliente_Membresia">
+          <ScalarProperty Name="Fecha_salida" ColumnName="Fecha_salida" />
+          <ScalarProperty Name="Fecha_Ingreso" ColumnName="Fecha_Ingreso" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Id_Membresia" ColumnName="Id_Membresia" />
+          <ScalarProperty Name="Id_Socio" ColumnName="Id_Socio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Membresias">
+      <EntityTypeMapping TypeName="webFinalDB.Membresia">
+        <MappingFragment StoreEntitySet="Membresia">
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Id_Membresia" ColumnName="Id_Membresia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Socios">
+      <EntityTypeMapping TypeName="webFinalDB.Socio">
+        <MappingFragment StoreEntitySet="Socio">
+          <ScalarProperty Name="Telefono_Oficina" ColumnName="Telefono_Oficina" />
+          <ScalarProperty Name="Direccion_Trabajo" ColumnName="Direccion_Trabajo" />
+          <ScalarProperty Name="Lugar_De_Trabajo" ColumnName="Lugar_De_Trabajo" />
+          <ScalarProperty Name="Fecha_Nacimiento" ColumnName="Fecha_Nacimiento" />
+          <ScalarProperty Name="Edad" ColumnName="Edad" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="cedula" ColumnName="cedula" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Foto" ColumnName="Foto" />
+          <ScalarProperty Name="Id_Socio" ColumnName="Id_Socio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="webFinalDB.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password_usuario" ColumnName="password_usuario" />
+          <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
